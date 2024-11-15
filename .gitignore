@@ -1,0 +1,15 @@
+# Node.js and React
+node_modules/
+build/
+dist/
+.env
+.DS_Store
+
+# Client-side build folder
+client/build/
+
+# Server-side build folder
+server/build/
+
+# Log files
+*.log
