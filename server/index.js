@@ -16,6 +16,7 @@ mongoose.connect(config.connectionString)
   });
 
 const User = require("./models/user.model");
+const TravelStory = require("./models/story.model");
 
 const { authenticateToken } = require("./utilities");
 
@@ -118,6 +119,14 @@ app.get("/get-user", authenticateToken, async (req, res) => {
     });
 });
 
+app.get("/add-travel-story", authenticateToken, async (req, res) =>{
+  const {title, story, visitedLocation, imageURL, visitedDate} = req.body;
+  const {userId} = req.user;
+  
+  if (!title || !story || !visitedLocation || !imageURL || !visitedDate){
+    return res.status(400).json({error: true, message: "All fields are required"});
+  }
+})
 
 app.listen(8000, () => {
     console.log('Server running on port 8000');
